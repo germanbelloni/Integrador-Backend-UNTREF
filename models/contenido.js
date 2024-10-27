@@ -1,62 +1,41 @@
 // Model for Contenido
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../conexion/database');
 
-const { DataTypes } = require('sequelize')
-const { sequelize } = require('../conexion/database.js')
+class Contenido extends Model {}
 
-const Contenido = sequelize.define(
- 'Contenido',
- {
-  id_contenido: {
-   type: DataTypes.INTEGER,
-   primaryKey: true,
-   autoIncrement: true,
-   allowNull: false,
-   unique: true
+Contenido.init({
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
   },
-  poster: {
-   type: DataTypes.STRING(100),
-   allowNull: true,
-   default: 1
+  poster: DataTypes.STRING,
+  titulo: DataTypes.STRING,
+  resumen: DataTypes.TEXT,
+  temporadas: DataTypes.INTEGER,
+  duracion: DataTypes.STRING,
+  trailer: DataTypes.STRING,
+  reparto: DataTypes.TEXT,
+  categorias: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'categorias', // Nombre de la tabla a la que hace referencia
+      key: 'id_categoria'
+    }
   },
-  titulo: {
-   type: DataTypes.STRING(100),
-   allowNull: false
-  },
-  id_categoria: {
-   type: DataTypes.INTEGER,
-   allowNull: false
-  },
-  resumen: {
-   type: DataTypes.TEXT,
-   allowNull: false
-  },
-  gen: {
-   type: DataTypes.STRING(100),
-   allowNull: false
-  },
-  id_busqueda: {
-   type: DataTypes.INTEGER,
-   allowNull: false
-  },
-  temporada: {
-   type: DataTypes.STRING(20),
-   allowNull: true,
-   default: 'N/A'
-  },
-  duracion: {
-   type: DataTypes.STRING(100),
-   allowNull: true,
-   default: 'N/A,'
-  },
-  trailer: {
-   type: DataTypes.STRING(100),
-   allowNull: false
+  generos: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'generos',
+      key: 'id_genero'
+    }
   }
- },
- {
+}, {
+  sequelize,
+  modelName: 'contenido',
   tableName: 'contenido',
   timestamps: false
- }
-)
+});
 
-module.exports = { Contenido }
+module.exports = Contenido;

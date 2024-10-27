@@ -1,48 +1,63 @@
-const { DataTypes } = require('sequelize')
 const { sequelize } = require('../conexion/database.js')
-const { Actor } = require('./actor.js')
-const { Contenido } = require('./contenido.js')
-const Contenido_Actores = sequelize.define(
- 'Contenido_Actores',
- {
-  id_contenido_actores: {
-   type: DataTypes.INTEGER,
-   primaryKey: true,
-   autoIncrement: true,
-   allowNull: false,
-   unique: true
-  },
+const { Model, DataTypes } = require('sequelize');
+const Contenido = require('./contenido');
+const Categoria = require('./categoria');
+const Genero = require('./genero');
+const Actor = require('./actor');
+
+
+class ContenidoActor extends Model {}
+
+ContenidoActor.init({
   id_contenido: {
-   type: DataTypes.INTEGER,
-   references: {
-    model: Contenido,
-    key: 'id_contenido'
-   }
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'contenido',
+      key: 'id'
+    }
   },
-  id_actores: {
-   type: DataTypes.INTEGER,
-   references: {
-    model: Actor,
-    key: 'id_actores'
-   }
+  id_actor: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'actores',
+      key: 'id_actor'
+    }
   }
- },
- {
-  tableName: 'Contenido_Actores',
+}, {
+  sequelize,
+  modelName: 'contenido_actor',
+  tableName: 'contenido_actores',
   timestamps: false
- }
-)
-// // Definir las relaciones
-Contenido.belongsToMany(Actor, {
- through: 'Contenido_Actores',
- foreignKey: 'id_contenido'
-})
+});
 
-Actor.belongsToMany(Contenido, {
- through: 'Contenido_Actores',
- foreignKey: 'id_actores'
-})
+module.exports = ContenidoActor;
 
-Contenido_Actores.belongsTo(Contenido, { foreignKey: 'id_contenido' })
-Contenido_Actores.belongsTo(Actor, { foreignKey: 'id_actores' })
-module.exports = { Contenido_Actores }
+// // // Definir las relaciones
+// Contenido.belongsToMany(Actor, {
+//  through: 'Contenido_Actores',
+//  foreignKey: 'id_contenido'
+// })
+
+// Actor.belongsToMany(Contenido, {
+//  through: 'Contenido_Actores',
+//  foreignKey: 'id_actores'
+// })
+
+// Contenido_Actores.belongsTo(Contenido, { foreignKey: 'id_contenido' })
+// Contenido_Actores.belongsTo(Actor, { foreignKey: 'id_actores' })
+// module.exports = { Contenido_Actores }
+
+
+// // Relaciones
+// Contenido.belongsTo(Categoria, { foreignKey: 'categorias' });
+// Contenido.belongsTo(Genero, { foreignKey: 'generos' });
+// Contenido.belongsToMany(Actor, { through: ContenidoActor, foreignKey: 'id_contenido' });
+// Actor.belongsToMany(Contenido, { through: ContenidoActor, foreignKey: 'id_actor' });
+
+// module.exports = {
+//   Contenido,
+//   Categoria,
+//   Genero,
+//   Actor,
+//   ContenidoActor
+// };

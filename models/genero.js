@@ -1,27 +1,21 @@
 // Model for Genero
-const { DataTypes } = require('sequelize')
-const { sequelize } = require('../conexion/database.js')
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../conexion/database');
 
-const Genero = sequelize.define(
-    'Genero',
-    {
-     id_genero: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-      unique: true
-     },
-     nombre: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      default: 1
-     }
-    },
-    {
-     tableName: 'generos',
-     timestamps: false
-    }
-   )
-   
-   module.exports = { Genero }
+class Genero extends Model {}
+
+Genero.init({
+  id_genero: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  nombre_genero: DataTypes.STRING
+}, {
+  sequelize,
+  modelName: 'genero',
+  tableName: 'generos',
+  timestamps: false
+});
+
+module.exports = Genero;

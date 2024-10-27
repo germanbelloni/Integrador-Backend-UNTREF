@@ -2,7 +2,7 @@ const Contenido = require('../models/contenido')
 const Categoria = require('../models/categoria')
 const Genero = require('../models/genero')
 const Actor = require('../models/actor')
-const Contenido_Actores = require('../models/contenido_actores')
+// const ContenidoActor = require('../models/contenido_actores')
 const { sequelize } = require('sequelize')
 
 //Obtener todos los datos

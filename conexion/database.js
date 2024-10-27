@@ -10,5 +10,5 @@ sequelize.authenticate()
     .then(() => console.log('Conectado a la base de datos MySQL'))
     .catch(err => console.log('No se pudo conectar a la base de datos', err))
 
-module.exports = connection, sequelize;
+module.exports = sequelize;
     

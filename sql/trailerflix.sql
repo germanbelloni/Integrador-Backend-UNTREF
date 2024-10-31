@@ -1,3 +1,8 @@
+CREATE TABLE IF NOT EXISTS `categorias` (
+    `id_categoria` int AUTO_INCREMENT NOT NULL UNIQUE,
+    `nombre_categoria` varchar(50) NOT NULL,
+    PRIMARY KEY (`id_categoria`)
+);
 CREATE TABLE IF NOT EXISTS `contenido` (
     `id` int AUTO_INCREMENT NOT NULL UNIQUE,
     `poster` varchar(255) NOT NULL,
@@ -10,12 +15,6 @@ CREATE TABLE IF NOT EXISTS `contenido` (
     `categorias` int NOT NULL,
     `generos` int NOT NULL,
     PRIMARY KEY (`id`)
-);
-
-CREATE TABLE IF NOT EXISTS `categorias` (
-    `id_categoria` int AUTO_INCREMENT NOT NULL UNIQUE,
-    `nombre_categoria` varchar(50) NOT NULL,
-    PRIMARY KEY (`id_categoria`)
 );
 
 CREATE TABLE IF NOT EXISTS `generos` (

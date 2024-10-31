@@ -13,7 +13,7 @@ router.get("/filter/categoria", contenidoController.filterDatabyCategory); //Fil
 
 router.get("/filter/genero", contenidoController.filterDatabyGenre); //Filter by Genre
 
-router.post("/contenido", contenidoController.createData); // Add new content
+router.post("/", contenidoController.createData); // Add new content
 
 router.put("/:id", contenidoController.updateData); // Update content by ID
 

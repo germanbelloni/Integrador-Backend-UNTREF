@@ -3,12 +3,16 @@ const express = require("express");
 const app = express();
 const contenidoRoutes = require("./routes/contenidoRoutes");
 const bd = require("./conexion/database");
+const { swaggerDocs, swaggerUi } = require("./config/swagger");
 
 // Middlewares
 app.use(express.json());
 
 // Rutas
-app.use("/", contenidoRoutes);
+app.use("/contenido", contenidoRoutes);
+
+// Documentar la ruta de Swagger
+app.use('/apidocs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Server
 const PORT = process.env.PORT || 3000;

@@ -3,6 +3,8 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../conexion/database");
 const Categoria = require("../models/categoria");
 const Genero = require("../models/genero");
+const Actor = require("../models/actor");
+// const ContenidoActor = require("./contenido_actores"); ERROR SIEMPRE
 
 class Contenido extends Model {}
 
@@ -45,6 +47,7 @@ Contenido.init(
 );
 // Establecer relación
 Contenido.belongsTo(Categoria, { foreignKey: "categorias" }); // Relación con Categoria
+// Contenido.belongsTo(ContenidoActor, {foreignKey: "reparto"});
 // Contenido.belongsToMany(Genero, { through: 'contenido_genero', foreignKey: 'id_contenido', otherKey: 'id_genero' }); // Relación con Genero
 
 // Contenido.belongsTo(Categoria, { foreignKey: "id_categoria" }); // Relación uno a uno

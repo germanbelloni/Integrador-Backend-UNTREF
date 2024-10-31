@@ -6,10 +6,42 @@ GET http://localhost:3000/2
 
 ### 3-Filtrar contenidos
 POST http://localhost:3000/filter/titulo
+Content-Type: application/json
 
 {
     "titulo": "The Mandalorian"
 }
 
 ### 4-Agregar un nuevo contenido
+POST http://localhost:3000/contenido
+Content-Type: application/json
 
+{
+    "titulo": "The Crown",
+    "reparto": "gaby",
+    "generos": 5,
+    "categorias": 1,
+    "resumen": "Este drama narra las rivalidades políticas y el romance de la reina Isabel II, así como los sucesos que moldearon la segunda mitad del siglo XX.",
+    "temporadas": 4,
+    "duracion": "0",
+    "trailer": "https://www.youtube.com/embed/JWtnJjn6ng0",
+    "poster": "./posters/1.jpg"
+}
+### 5-Actualizar un contenido
+PUT http://localhost:3000/1
+Content-Type: application/json
+
+{
+    "titulo": "The Crown - Temporada 2",
+    "reparto": "gaby",
+    "generos": 5,
+    "categorias": 1,
+    "resumen": "Este drama narra las rivalidades políticas y el romance de la reina Isabel II, así como los sucesos que moldearon la segunda mitad del siglo XX.",
+    "temporadas": 4,
+    "duracion": "0",
+    "trailer": "https://www.youtube.com/embed/JWtnJjn6ng0",
+    "poster": "./posters/1.jpg"
+}
+
+### 6-Eliminar un contenido
+DELETE http://localhost:3000/1

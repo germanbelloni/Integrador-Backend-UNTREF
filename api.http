@@ -1,0 +1,15 @@
+### 1-Obtener todos los contenidos
+GET http://localhost:3000/
+
+### 2-Obtener un contenido por ID
+GET http://localhost:3000/2
+
+### 3-Filtrar contenidos
+POST http://localhost:3000/filter/titulo
+
+{
+    "titulo": "The Mandalorian"
+}
+
+### 4-Agregar un nuevo contenido
+

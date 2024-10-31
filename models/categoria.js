@@ -1,21 +1,25 @@
 // Model for Categoria
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../conexion/database');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../conexion/database");
+const Contenido = require("../models/contenido");
 
 class Categoria extends Model {}
 
-Categoria.init({
-  id_categoria: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
+Categoria.init(
+  {
+    id_categoria: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    nombre_categoria: DataTypes.STRING,
   },
-  nombre_categoria: DataTypes.STRING
-}, {
-  sequelize,
-  modelName: 'categoria',
-  tableName: 'categorias',
-  timestamps: false
-});
+  {
+    sequelize,
+    modelName: "categoria",
+    tableName: "categorias",
+    timestamps: false,
+  }
+);
 
 module.exports = Categoria;

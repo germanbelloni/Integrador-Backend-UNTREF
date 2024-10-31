@@ -3,7 +3,7 @@
 ## Pasos para usar la API
 
 Descargar el archivo Trailerflix.sql del repositorio.
-Abrir MySQL Workbench y ejecutar las cláusulas del archivo Trailerflix.sql para crear y poblar la base de datos.
+Abrir MySQL Workbench y copiar de los archivos .sql del repositorio uno a uno para poblar la base de datos.
 Clonar el repositorio en tu computadora local usando el comando:
 
 https://github.com/germanbelloni/Trabajo-Integrador-Relacional-Backend-Diplomatura-UNTREF.git
@@ -27,6 +27,14 @@ Ejecutar el servidor con el comando: npm start
   - contenidoController.js
 /json
   - trailerflix.json
+/sql
+  -insert_actors.sql
+  -insert_categories.sql
+  -insert_contenido.sql
+  -insert_genres.sql
+  -insert_contenido_actores.sql
+  -trailerflix.sql
+  -entidad-relacion.png
 /README.md
 /app.js
 /conexion/
@@ -36,6 +44,7 @@ Ejecutar el servidor con el comando: npm start
   - categoria.js
   - genero.js
   - actor.js
+  - contenido_actores.js
 /routes/
   - contenidoRoutes.js
 ```
@@ -43,6 +52,7 @@ Ejecutar el servidor con el comando: npm start
 ### Descripción de Archivos
 
 - **/json**: Contiene el archivo trailerflix.json con los datos de películas y series.
+- /**sql:** Contiene los inserts correspondientes y la creacion de las tablas en formato .sql
 - **/README.md**: Este archivo, con la descripción del proyecto.
 - **/app.js**: Archivo principal de la aplicación Node.js.
 - **/conexion/database.js**: Configuración de la conexión a MySQL.

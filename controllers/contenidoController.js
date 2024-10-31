@@ -65,7 +65,6 @@ exports.getDatabyId = async (req, res) => {
   }
 };
 
-
 /**
  * @swagger
  * /contenido/filter/titulo:
@@ -89,7 +88,6 @@ exports.getDatabyId = async (req, res) => {
  *       500:
  *         description: Error al filtrar por título
  */
-
 
 //Filtrar datos por titulo
 exports.filterDataByTitle = async (req, res) => {
@@ -366,7 +364,7 @@ exports.createData = async (req, res) => {
 exports.updateData = async (req, res) => {
   try {
     const contenido = await Contenido.findByPk(req.params.id);
-    
+
     // Verificar si el contenido existe
     if (!contenido) {
       return res.status(404).json({ message: "Datos no encontrados" });
@@ -375,7 +373,9 @@ exports.updateData = async (req, res) => {
     // Validación de campos obligatorios (opcional, ajusta según tus necesidades)
     const { titulo, categorias, resumen, trailer, poster } = req.body;
     if (!titulo || !categorias || !resumen || !trailer || !poster) {
-      return res.status(400).json({ message: "Todos los campos obligatorios deben ser completados" });
+      return res.status(400).json({
+        message: "Todos los campos obligatorios deben ser completados",
+      });
     }
 
     // Actualizar el contenido
@@ -414,7 +414,7 @@ exports.deleteData = async (req, res) => {
   try {
     // Buscar el contenido por ID
     const contenido = await Contenido.findByPk(req.params.id);
-    
+
     // Verificar si el contenido existe
     if (!contenido) {
       return res.status(404).json({ message: "Datos no encontrados" });
@@ -428,4 +428,3 @@ exports.deleteData = async (req, res) => {
     res.status(500).json({ message: "Error eliminando datos", error });
   }
 };
-

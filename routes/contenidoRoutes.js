@@ -17,7 +17,7 @@ router.post("/", contenidoController.createData); // Add new content
 
 router.put("/:id", contenidoController.updateData); // Update content by ID
 
-router.delete('/:id', contenidoController.deleteData) // Delete content by ID
+router.delete("/:id", contenidoController.deleteData); // Delete content by ID
 
 //Routes that do not exist
 router.use((req, res) => {

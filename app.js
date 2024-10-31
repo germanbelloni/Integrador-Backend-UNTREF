@@ -12,7 +12,7 @@ app.use(express.json());
 app.use("/contenido", contenidoRoutes);
 
 // Documentar la ruta de Swagger
-app.use('/apidocs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/apidocs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Server
 const PORT = process.env.PORT || 3000;

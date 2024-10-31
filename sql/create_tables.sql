@@ -32,17 +32,8 @@ CREATE TABLE IF NOT EXISTS `actores` (
 
 CREATE TABLE IF NOT EXISTS `contenido_actores` (
     `id_contenido` int NOT NULL,
-    `id_actor` int NOT NULL
+    `id_actor` int NOT NULL,
+    PRIMARY KEY (`id_contenido`, `id_actor`), -- Definición de clave primaria
+    CONSTRAINT `contenido_actores_fk0` FOREIGN KEY (`id_contenido`) REFERENCES `contenido` (`id`),
+    CONSTRAINT `contenido_actores_fk1` FOREIGN KEY (`id_actor`) REFERENCES `actores` (`id_actor`) 
 );
-
-ALTER TABLE `contenido`
-ADD CONSTRAINT `contenido_fk8` FOREIGN KEY (`categorias`) REFERENCES `categorias` (`id_categoria`);
-
-ALTER TABLE `contenido`
-ADD CONSTRAINT `contenido_fk9` FOREIGN KEY (`generos`) REFERENCES `generos` (`id_genero`);
-
-ALTER TABLE `contenido_actores`
-ADD CONSTRAINT `contenido_actores_fk0` FOREIGN KEY (`id_contenido`) REFERENCES `contenido` (`reparto`);
-
-ALTER TABLE `contenido_actores`
-ADD CONSTRAINT `contenido_actores_fk1` FOREIGN KEY (`id_actor`) REFERENCES `actores` (`id_actor`);

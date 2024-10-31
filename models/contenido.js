@@ -2,6 +2,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../conexion/database");
 const Categoria = require("../models/categoria");
+const Genero = require("../models/genero");
 
 class Contenido extends Model {}
 
@@ -22,9 +23,10 @@ Contenido.init(
     categorias: {
       type: DataTypes.INTEGER,
       references: {
-        model: "categorias", // Nombre de la tabla a la que hace referencia
+        model: "categorias", // Nombre de la tabla referenciada
         key: "id_categoria",
       },
+      allowNull: false,
     },
     generos: {
       type: DataTypes.INTEGER,
@@ -41,7 +43,10 @@ Contenido.init(
     timestamps: false,
   }
 );
+// Establecer relación
+Contenido.belongsTo(Categoria, { foreignKey: "categorias" }); // Relación con Categoria
+// Contenido.belongsToMany(Genero, { through: 'contenido_genero', foreignKey: 'id_contenido', otherKey: 'id_genero' }); // Relación con Genero
 
-Contenido.belongsTo(Categoria, { foreignKey: "id_categoria" }); // Relación uno a uno
+// Contenido.belongsTo(Categoria, { foreignKey: "id_categoria" }); // Relación uno a uno
 
 module.exports = Contenido;

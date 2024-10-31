@@ -13,11 +13,11 @@ router.get("/filter/categoria", contenidoController.filterDatabyCategory); //Fil
 
 router.get("/filter/genero", contenidoController.filterDatabyGenre); //Filter by Genre
 
-router.post("/", contenidoController.createData); // Add new content
+router.post("/contenido", contenidoController.createData); // Add new content
 
 router.put("/:id", contenidoController.updateData); // Update content by ID
 
-//router.delete('/:id', contenidoController.deleteData) // Delete content by ID
+router.delete('/:id', contenidoController.deleteData) // Delete content by ID
 
 //Routes that do not exist
 router.use((req, res) => {

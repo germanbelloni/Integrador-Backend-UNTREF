@@ -4,7 +4,7 @@ const sequelize = require("../conexion/database");
 const Categoria = require("../models/categoria");
 const Genero = require("../models/genero");
 const Actor = require("../models/actor");
-// const ContenidoActor = require("./contenido_actores"); ERROR SIEMPRE
+const ContenidoActor = require("./contenido_actores");
 
 class Contenido extends Model {}
 
@@ -45,11 +45,25 @@ Contenido.init(
     timestamps: false,
   }
 );
-// Establecer relación
-Contenido.belongsTo(Categoria, { foreignKey: "categorias" }); // Relación con Categoria
-// Contenido.belongsTo(ContenidoActor, {foreignKey: "reparto"});
-// Contenido.belongsToMany(Genero, { through: 'contenido_genero', foreignKey: 'id_contenido', otherKey: 'id_genero' }); // Relación con Genero
 
-// Contenido.belongsTo(Categoria, { foreignKey: "id_categoria" }); // Relación uno a uno
+// Relación entre Contenido y Actor (Muchos a Muchos)
+Contenido.belongsToMany(Actor, {
+  through: ContenidoActor,
+  foreignKey: "id_contenido",
+});
+
+Actor.belongsToMany(Contenido, {
+  through: ContenidoActor,
+  foreignKey: "id_actor",
+});
+
+// Relación entre Contenido y Categoria (Uno a Muchos)
+Contenido.belongsTo(Categoria, {
+  foreignKey: "id_categoria",
+});
+
+Categoria.hasMany(Contenido, {
+  foreignKey: "id_categoria",
+});
 
 module.exports = Contenido;

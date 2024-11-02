@@ -1,4 +1,4 @@
-const { sequelize } = require("../conexion/database.js");
+const sequelize = require("../conexion/database.js");
 const { Model, DataTypes } = require("sequelize");
 const Contenido = require("./contenido");
 const Actor = require("./actor");
@@ -10,27 +10,24 @@ ContenidoActor.init(
     id_contenido: {
       type: DataTypes.INTEGER,
       references: {
-        model: Contenido,
+        model: "contenido",
         key: "id",
       },
     },
     id_actor: {
       type: DataTypes.INTEGER,
       references: {
-        model: Actor,
+        model: "actores",
         key: "id_actor",
       },
     },
   },
   {
     sequelize,
-    modelName: "contenido_actor",
+    // modelName: "contenido_actor",
     tableName: "contenido_actores",
     timestamps: false,
   }
 );
-
-ContenidoActor.belongsTo(Contenido, { foreignKey: "id_contenido" });
-ContenidoActor.belongsTo(Actor, { foreignKey: "id_actor" });
 
 module.exports = ContenidoActor;

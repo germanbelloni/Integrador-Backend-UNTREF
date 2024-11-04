@@ -3,3 +3,4 @@ DB_PASSWORD = germancito87
 DB_NAME = trailerflix
 DB_HOST= localhost
 DB_DIALECT= mysql
+PORT = 3000

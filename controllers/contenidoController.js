@@ -2,7 +2,7 @@ const Contenido = require("../models/contenido");
 const Categoria = require("../models/categoria");
 const Genero = require("../models/genero");
 const Actor = require("../models/actor");
-// const ContenidoActor = require('../models/contenido_actores') ERROR SIEMPRE
+const ContenidoActor = require('../models/contenido_actores') 
 const { sequelize, Op } = require("sequelize");
 
 /**

@@ -18,6 +18,7 @@ app.use("/apidocs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port https://localhost:${PORT}`);
+  console.log(`Documentation: https://localhost:${PORT}/apidocs`);
 });
 
 bd.sync()

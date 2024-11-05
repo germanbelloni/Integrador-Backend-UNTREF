@@ -5,6 +5,7 @@ const Categoria = require("../models/categoria");
 const Genero = require("../models/genero");
 const Actor = require("../models/actor");
 const ContenidoActor = require("./contenido_actores");
+const ContenidoGeneros = require("./contenido_genero")
 
 class Contenido extends Model {}
 
@@ -64,6 +65,18 @@ Contenido.belongsTo(Categoria, {
 
 Categoria.hasMany(Contenido, {
   foreignKey: "id_categoria",
+});
+
+// Relación entre Contenido y Genero (Muchos a Muchos)
+Contenido.belongsToMany(Genero, {
+  through: ContenidoGeneros, // Modelo intermedio
+  foreignKey: 'id_contenido', // Clave foránea en la tabla intermedia
+});
+
+// Relación inversa: Genero a Contenido
+Genero.belongsToMany(Contenido, {
+  through: ContenidoGeneros, // Modelo intermedio
+  foreignKey: 'id_genero', // Clave foránea en la tabla intermedia
 });
 
 module.exports = Contenido;

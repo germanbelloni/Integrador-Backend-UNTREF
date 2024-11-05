@@ -15,7 +15,7 @@ Genero.init(
   },
   {
     sequelize,
-    modelName: "genero",
+    // modelName: "genero",
     tableName: "generos",
     timestamps: false,
   }

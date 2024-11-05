@@ -22,7 +22,6 @@ Ejecutar el servidor con el comando: npm start
 
 Abrir MySQL Workbench y copiar de la carpeta `/sql` del repositorio los archivos que contienen los inserts, uno a uno para poblar la base de datos.
 
-
 ## Tecnologias utilizadas
 
 **Framework:** Express

@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS trailerflix;
-USE trailerflix;
+-- CREATE DATABASE IF NOT EXISTS trailerflix;
+-- USE trailerflix;
 CREATE TABLE IF NOT EXISTS `categorias` (
     `id_categoria` int AUTO_INCREMENT NOT NULL UNIQUE,
     `nombre_categoria` varchar(50) NOT NULL,
@@ -37,4 +37,12 @@ CREATE TABLE IF NOT EXISTS `contenido_actores` (
     PRIMARY KEY (`id_contenido`, `id_actor`), -- Definición de clave primaria
     CONSTRAINT `contenido_actores_fk0` FOREIGN KEY (`id_contenido`) REFERENCES `contenido` (`id`),
     CONSTRAINT `contenido_actores_fk1` FOREIGN KEY (`id_actor`) REFERENCES `actores` (`id_actor`) 
+);
+
+CREATE TABLE IF NOT EXISTS `contenido_genero` (
+    `id_contenido` int NOT NULL,
+    `id_genero` int NOT NULL,
+    PRIMARY KEY (`id_contenido`, `id_genero`), -- Definición de clave primaria
+    CONSTRAINT `contenido_genero_fk0` FOREIGN KEY (`id_contenido`) REFERENCES `contenido` (`id`),
+    CONSTRAINT `contenido_genero_fk1` FOREIGN KEY (`id_genero`) REFERENCES `generos` (`id_genero`) 
 );

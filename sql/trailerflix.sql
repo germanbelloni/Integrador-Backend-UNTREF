@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS trailerflix;
+USE trailerflix;
 CREATE TABLE IF NOT EXISTS `categorias` (
     `id_categoria` int AUTO_INCREMENT NOT NULL UNIQUE,
     `nombre_categoria` varchar(50) NOT NULL,

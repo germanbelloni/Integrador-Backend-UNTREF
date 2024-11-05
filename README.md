@@ -2,18 +2,47 @@
 
 ## Pasos para usar la API
 
-Descargar el archivo Trailerflix.sql del repositorio.
-Abrir MySQL Workbench y copiar de los archivos .sql del repositorio uno a uno para poblar la base de datos.
+Descargar desde la carpeta **`/sql`** el archivo Trailerflix.sql del repositorio
+
 Clonar el repositorio en tu computadora local usando el comando:
 
-https://github.com/germanbelloni/Trabajo-Integrador-Relacional-Backend-Diplomatura-UNTREF.git
+ span
+
+```
+span https://github.com/germanbelloni/Trabajo-Integrador-Relacional-Backend-Diplomatura-UNTREF.git
+```
 
 Abrir el proyecto en tu IDE de VS Code
+
 Instalar las dependencias necesarias ejecutando el siguiente comando en la terminal:
 
 npm install
 
 Ejecutar el servidor con el comando: npm start
+
+Abrir MySQL Workbench y copiar de la carpeta `/sql` del repositorio los archivos que contienen los inserts, uno a uno para poblar la base de datos.
+
+
+## Tecnologias utilizadas
+
+**Framework:** Express
+**ORM:** Sequelize
+**Server:** MySQL
+**Entorno:** Node js
+
+## Variables de entorno
+
+Para ejecutar este proyecto, se deberá agregar las siguientes variables de entorno a su archivo .env
+
+`DB_USER:` Especifica el usuario de la base de datos
+
+`DB_PASSWORD:` La contraseña del usuario de la base de datos
+
+`DB_NAME:` El nombre de la base de datos que estás usando
+
+`DB_HOST:` La dirección del servidor de la base de datos
+
+`DB_DIALECT:` Especifica el tipo de base de datos que estás usando con Sequelize
 
 ## Notas adicionales:
 
@@ -23,6 +52,10 @@ Ejecutar el servidor con el comando: npm start
 ## Estructura del Repositorio
 
 ```plaintext
+/conexion
+  - database.js
+/config
+  - swagger.js
 /controllers
   - contenidoController.js
 /json

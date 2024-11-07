@@ -458,7 +458,7 @@ exports.filterDatabyCategory = async (req, res) => {
  *         description: Error filtrando por género
  */
 
-exports.filPterDatabyGenre = async (req, res) => {
+exports.filterDatabyGenre = async (req, res) => {
   const { genero } = req.query;
 
   // Verificar si se pasa el parámetro 'genero'

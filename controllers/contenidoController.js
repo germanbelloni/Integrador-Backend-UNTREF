@@ -469,11 +469,11 @@ exports.filterDatabyGenre = async (req, res) => {
   }
 
   try {
-    // Buscar contenidos asociados con el genero proporcionado
     const contenidos = await Contenido.findAll({
       include: [
         {
           model: Genero,
+          as: "genero", // Especifica el alias usado en la relación
           where: {
             nombre_genero: {
               [Op.like]: `%${genero}%`, // Filtro de género por nombre
@@ -483,6 +483,7 @@ exports.filterDatabyGenre = async (req, res) => {
         },
       ],
     });
+    
 
     // Verificar si se encontraron contenidos
     if (contenidos.length === 0) {

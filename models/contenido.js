@@ -4,8 +4,6 @@ const sequelize = require("../conexion/database");
 const Categoria = require("../models/categoria");
 const Genero = require("../models/genero");
 const Actor = require("../models/actor");
-const ContenidoActor = require("./contenido_actores");
-const ContenidoGeneros = require("./contenido_genero")
 
 class Contenido extends Model {}
 
@@ -22,22 +20,6 @@ Contenido.init(
     temporadas: DataTypes.INTEGER,
     duracion: DataTypes.STRING,
     trailer: DataTypes.STRING,
-    reparto: DataTypes.TEXT,
-    categorias: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "categorias", // Nombre de la tabla referenciada
-        key: "id_categoria",
-      },
-      allowNull: false,
-    },
-    generos: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "generos",
-        key: "id_genero",
-      },
-    },
   },
   {
     sequelize,
@@ -47,36 +29,21 @@ Contenido.init(
   }
 );
 
-// Relación entre Contenido y Actor (Muchos a Muchos)
-Contenido.belongsToMany(Actor, {
-  through: ContenidoActor,
-  foreignKey: "id_contenido",
-});
-
-Actor.belongsToMany(Contenido, {
-  through: ContenidoActor,
-  foreignKey: "id_actor",
-});
-
-// Relación entre Contenido y Categoria (Uno a Muchos)
-Contenido.belongsTo(Categoria, {
-  foreignKey: "id_categoria",
-});
-
-Categoria.hasMany(Contenido, {
-  foreignKey: "id_categoria",
-});
-
-// Relación entre Contenido y Genero (Muchos a Muchos)
+// Relaciones
+Contenido.belongsTo(Categoria, { foreignKey: "id_categoria", as: "categoria" });
 Contenido.belongsToMany(Genero, {
-  through: ContenidoGeneros, // Modelo intermedio
-  foreignKey: 'id_contenido', // Clave foránea en la tabla intermedia
+  as: "genero",
+  through: "ContenidoGeneros",
+  foreignKey: "id_contenido",
+  otherKey: "id_genero",
+  timestamps: false,
 });
-
-// Relación inversa: Genero a Contenido
-Genero.belongsToMany(Contenido, {
-  through: ContenidoGeneros, // Modelo intermedio
-  foreignKey: 'id_genero', // Clave foránea en la tabla intermedia
+Contenido.belongsToMany(Actor, {
+  as: "actor",
+  through: "ContenidoActor",
+  foreignKey: "id_contenido",
+  otherKey: "id_actor",
+  timestamps: false,
 });
 
 module.exports = Contenido;

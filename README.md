@@ -6,10 +6,8 @@ Descargar desde la carpeta **`/sql`** el archivo Trailerflix.sql del repositorio
 
 Clonar el repositorio en tu computadora local usando el comando:
 
- span
-
 ```
-span https://github.com/germanbelloni/Trabajo-Integrador-Relacional-Backend-Diplomatura-UNTREF.git
+https://github.com/germanbelloni/Trabajo-Integrador-Relacional-Backend-Diplomatura-UNTREF.git
 ```
 
 Abrir el proyecto en tu IDE de VS Code

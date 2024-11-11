@@ -1,5 +1,5 @@
 const { Sequelize } = require("sequelize");
-process.loadEnvFile();
+require('dotenv').config
 
 const sequelize = new Sequelize(
   process.env.DB_NAME || "trailerflix",

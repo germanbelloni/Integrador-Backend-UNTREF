@@ -15,17 +15,17 @@ Content-Type: application/json
 POST http://localhost:3000/contenido
 Content-Type: application/json
 
-{
-    "titulo": "The Crown",
-    "reparto": [1, 2],       
-    "generos": [5],          
-    "categorias": 1,         
-    "resumen": "Este drama narra las rivalidades políticas y el romance de la reina Isabel II, así como los sucesos que moldearon la segunda mitad del siglo XX.",
-    "temporadas": 4,
-    "duracion": "0",
-    "trailer": "https://www.youtube.com/embed/JWtnJjn6ng0",
-    "poster": "./posters/1.jpg"
-}
+    {
+        "titulo": "The Crown",
+        "reparto": [1, 2],       
+        "generos": [5],          
+        "categorias": 1,         
+        "resumen": "Este drama narra las rivalidades políticas y el romance de la reina Isabel II, así como los sucesos que moldearon la segunda mitad del siglo XX.",
+        "temporadas": 4,
+        "duracion": "0",
+        "trailer": "https://www.youtube.com/embed/JWtnJjn6ng0",
+        "poster": "./posters/1.jpg"
+    }
 
 
 

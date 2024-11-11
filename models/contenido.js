@@ -33,14 +33,14 @@ Contenido.init(
 Contenido.belongsTo(Categoria, { foreignKey: "id_categoria", as: "categoria" });
 Contenido.belongsToMany(Genero, {
   as: "genero",
-  through: "ContenidoGeneros",
+  through: "contenidoGeneros",
   foreignKey: "id_contenido",
   otherKey: "id_genero",
   timestamps: false,
 });
 Contenido.belongsToMany(Actor, {
   as: "actor",
-  through: "ContenidoActor",
+  through: "contenidoActor",
   foreignKey: "id_contenido",
   otherKey: "id_actor",
   timestamps: false,
